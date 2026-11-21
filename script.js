@@ -329,7 +329,7 @@
   async function shareSong(s) {
     if (!s || !s.url) { toast("No link available for this song."); return; }
     if (navigator.share) {
-      try { await navigator.share({ title: s.title, text: s.title + " – " + s.artist, url: s.url }); return; }
+      try { await navigator.share({ url: s.url }); return; }
       catch (e) { if (e.name === "AbortError") return; }
     }
     try { await navigator.clipboard.writeText(s.url); toast("Song link copied"); }
